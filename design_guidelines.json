@@ -1,0 +1,97 @@
+{
+  "theme": "light",
+  "archetype": "4_Swiss_High_Contrast",
+  "typography": {
+    "fonts": {
+      "heading": "Outfit, sans-serif",
+      "body": "Manrope, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl font-outfit tracking-tight font-medium text-slate-900",
+      "h2": "text-2xl sm:text-3xl font-outfit tracking-tight font-medium text-slate-900",
+      "h3": "text-xl font-outfit tracking-tight font-medium text-slate-900",
+      "h4": "text-lg font-outfit font-medium text-slate-900",
+      "body": "text-base font-manrope leading-relaxed text-slate-600",
+      "label": "text-xs font-manrope uppercase tracking-[0.2em] font-bold text-slate-500",
+      "mono": "text-sm font-mono text-slate-700"
+    }
+  },
+  "colors": {
+    "background": {
+      "app": "bg-[#F8F9FA]",
+      "card": "bg-white",
+      "panel": "bg-white",
+      "dropzone": "bg-slate-50 hover:bg-slate-100 transition-colors"
+    },
+    "text": {
+      "primary": "text-slate-900",
+      "secondary": "text-slate-500",
+      "accent": "text-indigo-600"
+    },
+    "border": {
+      "default": "border-slate-200",
+      "focus": "border-indigo-500",
+      "dashed": "border-2 border-dashed border-slate-300"
+    },
+    "accent": {
+      "primary": "bg-slate-900 hover:bg-slate-800 text-white",
+      "secondary": "bg-white hover:bg-slate-50 text-slate-900 border border-slate-200",
+      "ai_magic": "bg-indigo-600 hover:bg-indigo-700 text-white",
+      "ai_magic_light": "bg-indigo-50 text-indigo-700 border border-indigo-200"
+    },
+    "status": {
+      "high_confidence": "bg-emerald-50 text-emerald-700 border border-emerald-200",
+      "medium_confidence": "bg-amber-50 text-amber-700 border border-amber-200",
+      "low_confidence": "bg-rose-50 text-rose-700 border border-rose-200"
+    }
+  },
+  "layout_and_spacing": {
+    "general": "Generous spacing philosophy. Use p-6, p-8, p-12 for main containers to ensure breathing room.",
+    "grid_system": "Use a 12-column bento grid for the workspace. Form Builder Sidebar: col-span-1 md:col-span-4. Live Preview / Review Panel: col-span-1 md:col-span-8. Gap: gap-6.",
+    "surface": "Tactile Neumorphism / Swiss clean look. Cards should be flat (no heavy shadow), using a sharp 1px border (border border-slate-200) and rounded-xl radius.",
+    "alignment": "Left-align form inputs and labels for optimal scanability. Center-align dropzone content."
+  },
+  "components": {
+    "buttons": "Customized Shadcn buttons. rounded-lg, tracking-wide text-sm font-medium. Primary actions use slate-900 (authority), AI actions use indigo-600.",
+    "inputs": "Shadcn input and select components. Flat background (bg-white), subtle border. On focus: ring-2 ring-indigo-500/20 border-indigo-500.",
+    "badges": "Inline confidence pills. text-xs font-semibold px-2.5 py-0.5 rounded-full. Required for all AI-extracted fields during the review step.",
+    "draggable_cards": "Field cards in the builder should have a drag handle icon (lucide-react 'GripVertical'). Use hover state to slightly darken border (hover:border-slate-300) and apply a subtle shadow (hover:shadow-sm) to indicate interactivity.",
+    "wizard_stepper": "Clean horizontal stepper. Active step: indigo-600 circle. Inactive: slate-200 circle. Font: Outfit."
+  },
+  "motion_and_interactions": {
+    "hover": "Subtle translate-y or border darkening. Avoid over-animating static elements.",
+    "active": "Active/Focus states must be highly visible (accessibility priority).",
+    "ai_loading_state": "Use Framer Motion to create a 'scanning' beam effect over the document preview, or a shimmering gradient text skeleton for fields being extracted."
+  },
+  "icons_and_assets": {
+    "library": "lucide-react",
+    "image_urls": [
+      {
+        "slug": "builder_background",
+        "url": "https://static.prod-images.emergentagent.com/jobs/c8a82bef-4353-4c5b-bc1f-89f17e6743af/images/d27f90d241abe8f1da1ffbc8fd3054c72814b9182387790b3da90ed0dd8df8dc.png",
+        "description": "Subtle abstract texture. Can be used as a low-opacity background (10-20%) for the app's main wrapper."
+      },
+      {
+        "slug": "empty_state_upload",
+        "url": "https://static.prod-images.emergentagent.com/jobs/c8a82bef-4353-4c5b-bc1f-89f17e6743af/images/d929b44dd3e842172028bf594c4a5680f7d343e6dc4ac6e90b85c3409e00d731.png",
+        "description": "3D Geometric empty state illustration. Use this inside the file Dropzone component."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Import Outfit and Manrope fonts from Google Fonts and configure them in tailwind.config.js.",
+    "Build a multi-step wizard (Build -> Upload -> AI Extract -> Review). Manage state at the parent level.",
+    "Use 'dnd-kit' or 'react-beautiful-dnd' for the drag-and-drop form builder interface.",
+    "Implement the Layout using standard CSS Grid (grid-cols-12). Sidebar takes 4 cols, Preview takes 8 cols.",
+    "Customize Shadcn UI to remove default heavy Vercel-like shadows. Implement the 'Swiss High Contrast' style (1px border, stark white backgrounds, no shadow).",
+    "Ensure the confidence scores (High, Medium, Low) are visually distinct chips placed next to the input labels in the Review panel.",
+    "For the Dropzone, build a large dashed-border container with the empty_state_upload image in the center.",
+    "All interactive elements (buttons, inputs, form fields, dropzone, wizard steps) MUST include a 'data-testid' attribute in kebab-case (e.g., data-testid='upload-dropzone', data-testid='add-field-button')."
+  ],
+  "accessibility": {
+    "contrast": "Ensure all text, especially the slate-500 secondary text, meets WCAG AA 4.5:1 ratio against light backgrounds.",
+    "focus_management": "All inputs and draggable items must be keyboard accessible and have a visible focus ring.",
+    "aria_labels": "Use aria-labels for drag handles and icon-only buttons (like delete field)."
+  }
+}
